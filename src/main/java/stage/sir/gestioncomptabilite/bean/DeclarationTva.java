@@ -1,7 +1,10 @@
 package stage.sir.gestioncomptabilite.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @Entity @XmlRootElement
 public class DeclarationTva {
@@ -14,12 +17,15 @@ public class DeclarationTva {
     private double annee;
     private double mois;
     private double trim;
+    private String refDemande;
+
     @ManyToOne
     private Societe societe;
     @ManyToOne
     private TypeDeclarationTva typeDeclarationTva;
     @ManyToOne
     private EtatDeclaration etatDeclaration;
+
 
     public EtatDeclaration getEtatDeclaration() {
         return etatDeclaration;
@@ -108,5 +114,13 @@ public class DeclarationTva {
 
     public void setTypeDeclarationTva(TypeDeclarationTva typeDeclarationTva) {
         this.typeDeclarationTva = typeDeclarationTva;
+    }
+
+    public String getRefDemande() {
+        return refDemande;
+    }
+
+    public void setRefDemande(String refDemande) {
+        this.refDemande = refDemande;
     }
 }

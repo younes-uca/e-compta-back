@@ -14,6 +14,7 @@ public class DeclarationIsObject {
     private Double montantISPaye;
     private Double totalPaye;
     private Societe societe;
+    private String demande;
     private List<Facture> factureD = new ArrayList<Facture>();
     private List<Facture> factureC = new ArrayList<Facture>();
     private TauxIS tauxIS;
@@ -115,5 +116,13 @@ public class DeclarationIsObject {
 
     public void setDeclarationIS(DeclarationIS declarationIS) {
         this.declarationIS = declarationIS;
+    }
+
+    public String getDemande() {
+        return demande;
+    }
+
+    public void setDemande(String demande) {
+        this.demande = demande;
     }
 }

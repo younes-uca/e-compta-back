@@ -31,4 +31,22 @@ public class ComptableService {
             return 1;
         }
     }
+
+    public List<Comptable>  findByType(String type){
+        return comptableDao.findByType(type);
+    }
+
+    public int update(Comptable comptable) {
+        Comptable foundedComptable = findByCode(comptable.getCode());
+        if(foundedComptable == null){
+            return -1;
+        }else{
+            foundedComptable.setNom(comptable.getNom());
+            foundedComptable.setType(comptable.getType());
+            comptableDao.save(comptable);
+            return 1;
+        }
+
+    }
+
 }

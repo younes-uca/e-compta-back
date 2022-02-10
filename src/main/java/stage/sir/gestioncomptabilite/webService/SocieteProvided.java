@@ -54,7 +54,7 @@ public class SocieteProvided {
     }
     @PostMapping("/save2")
     public int save2(@RequestBody Societe societe) {
-        return societeService.save2(societe);
+        return societeService.save2(societe, societe.getPresidentSociete());
     }
 
 }

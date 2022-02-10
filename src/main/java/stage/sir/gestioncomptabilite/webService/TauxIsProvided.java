@@ -32,4 +32,14 @@ public class TauxIsProvided {
     public int save(TauxIS tauxIS) {
         return tauxISService.save(tauxIS);
     }
+
+    @GetMapping("/taux-is-config/{id}")
+    public List<TauxIS> findByTauxIsConfig(@PathVariable Long id) {
+        return tauxISService.findByTauxIsConfig(id);
+    }
+
+    @GetMapping("/date")
+    public List<TauxIS> findTauxIs(){
+        return tauxISService.findTauxIs();
+    }
 }

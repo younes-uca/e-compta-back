@@ -21,7 +21,7 @@ public class CompteComptableService {
     }
 
     public List<CompteComptable> findAll() {
-        return compteComptableDao.findAll();
+        return compteComptableDao.findAllByOrderByCode();
     }
 
    public int  save(SousClasseComptable sousClasseComptable, List<CompteComptable> listeCompteComptable){

@@ -40,6 +40,10 @@ public class TauxIrProvided {
 		return tauxIrService.findAll();
 	}
 	
+	@GetMapping("/date")
+	public List<TauxIr> findTauxIr(){
+		return tauxIrService.findTauxIr();
+	}
 	
 	
 	

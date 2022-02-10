@@ -28,4 +28,8 @@ public class TvaService {
         tvaDao.save(tva);
         return 1;
     }
+
+    public Tva findByValeur(Double valeur){
+        return tvaDao.findByValeur(valeur);
+    }
 }

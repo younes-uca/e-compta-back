@@ -10,7 +10,6 @@ public class Tva {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String ref;
-    private String libelle;
     private double valeur ;
 
     public double getValeur() {
@@ -37,11 +36,4 @@ public class Tva {
         this.ref = ref;
     }
 
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
 }

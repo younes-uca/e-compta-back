@@ -1,9 +1,11 @@
 package stage.sir.gestioncomptabilite.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Demande {
@@ -16,6 +18,7 @@ public class Demande {
     private double annee;
     private Integer mois;
     private Integer trimestre;
+    private boolean enableBtn;
     @ManyToOne
     private Societe societe;
     @ManyToOne
@@ -24,7 +27,9 @@ public class Demande {
     private Comptable comptableValidateur;
     @ManyToOne
     private EtatDemande etatDemande;
-
+    @OneToMany(mappedBy="demande")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Facture> factures;
     
     
     
@@ -114,5 +119,21 @@ public class Demande {
 
     public void setEtatDemande(EtatDemande etatDemande) {
         this.etatDemande = etatDemande;
+    }
+
+    public boolean isEnableBtn() {
+        return enableBtn;
+    }
+
+    public void setEnableBtn(boolean enableBtn) {
+        this.enableBtn = enableBtn;
+    }
+
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
     }
 }

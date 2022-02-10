@@ -27,4 +27,9 @@ public class TauxISConfigProvided {
     public int save(@RequestBody TauxIsConfig tauxIsConfig) {
         return tauxISConfigService.save(tauxIsConfig);
     }
+
+    @GetMapping("/find-current-is-config")
+    public TauxIsConfig findCurrentTauxIsConfig() {
+        return tauxISConfigService.findCurrentTauxIsConfig();
+    }
 }

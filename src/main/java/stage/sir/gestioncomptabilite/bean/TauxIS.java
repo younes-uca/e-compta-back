@@ -12,6 +12,8 @@ public class TauxIS {
     private Double resultatFiscalMax;
     private Double pourcentage;
     private Double penalite;
+    @ManyToOne
+    private TauxIsConfig tauxIsConfig;
 
     public Long getId() {
         return id;
@@ -56,4 +58,12 @@ public class TauxIS {
     public Double getPenalite() { return penalite; }
 
     public void setPenalite(Double penalite) { this.penalite = penalite; }
+
+    public TauxIsConfig getTauxIsConfig() {
+        return tauxIsConfig;
+    }
+
+    public void setTauxIsConfig(TauxIsConfig tauxIsConfig) {
+        this.tauxIsConfig = tauxIsConfig;
+    }
 }

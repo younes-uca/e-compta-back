@@ -85,6 +85,10 @@ public class AcomptesService {
 
     }
 
+    public List<Acomptes> findBySocieteIce(String ice){
+        return acomptesDao.findBySocieteIce(ice);
+    }
+
 
     @Autowired
     AcomptesDao acomptesDao;

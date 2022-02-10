@@ -58,6 +58,7 @@ public class DateUtil {
         }
     }
 
+
     public static java.sql.Date convertFormUtilToSql(java.util.Date date) {
         if (date != null) {
             return new java.sql.Date(date.getTime());
@@ -114,4 +115,15 @@ public class DateUtil {
         return (date1.getYear() == date2.getYear() && date1.getMonth() == date2.getMonth() && date1.getDay() == date2.getDay());
     }
 
+    public static double getYear(Date date) {
+        LocalDate currentDate = LocalDate.parse(convertDateToString(date));
+        double year = currentDate.getYear();
+        return year;
+    }
+
+    public static String convertDateToString(Date date){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String format = formatter.format(date);
+        return format;
+    }
 }

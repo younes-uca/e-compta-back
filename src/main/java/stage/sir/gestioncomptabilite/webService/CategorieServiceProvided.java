@@ -42,4 +42,11 @@ public class CategorieServiceProvided {
 		return categorieServiceService.findAll();
 	}
 
+	@GetMapping("/indice")
+	public List<CategorieService> findAllByOrderByIndiceAffichage() {
+		return categorieServiceService.findAllByOrderByIndiceAffichage();
+	}
+
+
+
 }

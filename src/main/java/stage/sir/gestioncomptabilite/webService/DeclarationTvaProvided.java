@@ -57,6 +57,11 @@ public class DeclarationTvaProvided {
         return declarationTvaService.save(declarationTva);
     }
 
+    @PostMapping("/save-validateur")
+    public int saveComptableValidateur(@RequestBody DeclarationTva declarationTva) {
+        return declarationTvaService.saveComptableValidateur(declarationTva);
+    }
+
     @GetMapping("annee/{annee}/mois/{mois}")
     public List<DeclarationTva> findByAnneeAndMois(double annee, double mois) {
         return declarationTvaService.findByAnneeAndMois(annee, mois);
@@ -76,6 +81,11 @@ public class DeclarationTvaProvided {
     @PostMapping("/savebrouillon")
     public int savebrouillon(@RequestBody DeclarationTva declarationTva) {
         return declarationTvaService.savebrouillon(declarationTva);
+    }
+
+    @PostMapping("/savebrouillonvalidateur")
+    public int savebrouillonValidateur(@RequestBody DeclarationTva declarationTva) {
+        return declarationTvaService.savebrouillonValidateur(declarationTva);
     }
     @PostMapping("/convertToXmlFile")
     public void convertToXmlFile(@RequestBody DeclarationTva declarationTva) {

@@ -18,20 +18,22 @@ public class Societe {
     private String ice; //Identifiant Commun de l'Entreprise
     private String adresse;
     private String raisonSociale;
+    private String raisonSocialeSocondaire;
+    private String nomSociete; //username de societe
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dateCreation;
     private int anneeExploitation;
+    private Long capitalSociale;
+    private String description;
     private Double age;
-   
-    
-    
-    
-    
-    
-    
-
     @ManyToOne
     private Comptable comptable;
+    @ManyToOne
+    private PresidentSociete presidentSociete;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
+    @OneToMany(mappedBy="societe")
+    private List<PieceJointSociete> pieceJointSocietes;
     @ManyToOne
     private EtatSociete etatSociete;
     @Column(name = "user_name", nullable = false)
@@ -219,4 +221,55 @@ public class Societe {
     public void setEtatSociete(EtatSociete etatSociete) {
         this.etatSociete = etatSociete;
     }
+
+    public List<PieceJointSociete> getPieceJointSocietes() {
+        return pieceJointSocietes;
+    }
+
+    public void setPieceJointSocietes(List<PieceJointSociete> pieceJointSocietes) {
+        this.pieceJointSocietes = pieceJointSocietes;
+    }
+
+    
+    public PresidentSociete getPresidentSociete() {
+        return presidentSociete;
+    }
+
+    public void setPresidentSociete(PresidentSociete presidentSociete) {
+        this.presidentSociete = presidentSociete;
+    }
+
+    public Long getCapitalSociale() {
+        return capitalSociale;
+    }
+
+    public void setCapitalSociale(Long capitalSociale) {
+        this.capitalSociale = capitalSociale;
+    }
+
+    public String getRaisonSocialeSocondaire() {
+        return raisonSocialeSocondaire;
+    }
+
+    public void setRaisonSocialeSocondaire(String raisonSocialeSocondaire) {
+        this.raisonSocialeSocondaire = raisonSocialeSocondaire;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getNomSociete() {
+        return nomSociete;
+    }
+
+    public void setNomSociete(String nomSociete) {
+        this.nomSociete = nomSociete;
+    }
+
+
 }

@@ -48,4 +48,9 @@ public class ClassComptableService {
         classComptableDao.save(classeComptable);
         return 1;
     }
+
+    public ClasseComptable findByLibelle(String libelle)
+    {
+        return classComptableDao.findByLibelle(libelle);
+    }
 }

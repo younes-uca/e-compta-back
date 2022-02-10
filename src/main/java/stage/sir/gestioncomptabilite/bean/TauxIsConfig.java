@@ -1,9 +1,10 @@
 package stage.sir.gestioncomptabilite.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class TauxIsConfig {
@@ -11,8 +12,11 @@ public class TauxIsConfig {
     private Long id;
     private String ref;
     private Double cotisationMinimale;
-    private Integer anneeMin;
-    private Integer anneeMax;
+    private Date dateMin;
+    private Date dateMax;
+    @OneToMany(mappedBy = "tauxIsConfig")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<TauxIS> tauxISList;
 
 
     public Long getId() {
@@ -39,17 +43,27 @@ public class TauxIsConfig {
         this.cotisationMinimale = cotisationMinimale;
     }
 
-    public Integer getAnneeMin() { return anneeMin; }
-
-    public void setAnneeMin(Integer anneeMin) {
-        this.anneeMin = anneeMin;
+    public Date getDateMin() {
+        return dateMin;
     }
 
-    public Integer getAnneeMax() {
-        return anneeMax;
+    public void setDateMin(Date dateMin) {
+        this.dateMin = dateMin;
     }
 
-    public void setAnneeMax(Integer anneeMax) {
-        this.anneeMax = anneeMax;
+    public Date getDateMax() {
+        return dateMax;
+    }
+
+    public void setDateMax(Date dateMax) {
+        this.dateMax = dateMax;
+    }
+
+    public List<TauxIS> getTauxISList() {
+        return tauxISList;
+    }
+
+    public void setTauxISList(List<TauxIS> tauxISList) {
+        this.tauxISList = tauxISList;
     }
 }

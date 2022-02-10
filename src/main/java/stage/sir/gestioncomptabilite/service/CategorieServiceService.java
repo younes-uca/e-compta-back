@@ -12,23 +12,22 @@ import stage.sir.gestioncomptabilite.dao.CategorieServiceDao;
 
 @Service
 public class CategorieServiceService {
+
 	@Autowired
 	CategorieServiceDao categorieServiceDao;
 
-	
-	
-	
-	
-	
 	public Optional<CategorieService> findById(Long id) {
 		return categorieServiceDao.findById(id);
 	}
+
 	public List<CategorieService> findAll() {
 		return categorieServiceDao.findAll();
 	}
+
 	public CategorieService findByTitre(String titre) {
 		return categorieServiceDao.findByTitre(titre);
 	}
+
 	@Transactional
 	public int deleteByTitre(String titre) {
 		return categorieServiceDao.deleteByTitre(titre);
@@ -44,7 +43,9 @@ public class CategorieServiceService {
 		
 	}
 
-
+	public List<CategorieService> findAllByOrderByIndiceAffichage() {
+		return categorieServiceDao.findAllByOrderByIndiceAffichage();
+	}
 
 	
 

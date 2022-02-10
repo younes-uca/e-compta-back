@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import stage.sir.gestioncomptabilite.bean.TauxIsConfig;
 import stage.sir.gestioncomptabilite.dao.TauxISConfigDao;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,5 +29,12 @@ public class TauxISConfigService {
             tauxISConfigDao.save(tauxIsConfig);
             return 1;
         }
+    }
+
+    public TauxIsConfig findCurrentTauxIsConfig(){
+        return tauxISConfigDao.findCurrentTauxIsConfig(new Date());
+    }
+    public TauxIsConfig findTauxIsConfig(Date date){
+        return tauxISConfigDao.findTauxIsConfig(date);
     }
 }

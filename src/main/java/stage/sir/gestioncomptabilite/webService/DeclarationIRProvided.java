@@ -24,45 +24,32 @@ import stage.sir.gestioncomptabilite.vo.DeclarationIrVo;
 public class DeclarationIRProvided {
 	@Autowired
 	DeclarationIRService declarationIRService;
+
 	@PostMapping("/search")
 	public List<DeclarationIR> search(@RequestBody DeclarationIrVo declarationIrVo){
 		return declarationIRService.search(declarationIrVo);
 	}
-	
-
-	
-
 
 	@DeleteMapping("/ref/{ref}")
 	public int deleteByRef(@PathVariable String ref) {
 		return declarationIRService.deleteByRef(ref);
 	}
 
-
-
-
-
-
 	@GetMapping("/ice/{ice}/annee/{annee}")
 	public List<DeclarationIR> findBySocieteIceAndAnnee(@PathVariable String ice,@PathVariable Integer annee) {
 		return declarationIRService.findBySocieteIceAndAnnee(ice, annee);
 	}
 
-
-
-
-
+	@GetMapping("/ice/{ice}")
+	public List<DeclarationIR> findBySocieteIce(@PathVariable String ice) {
+		return declarationIRService.findBySocieteIce(ice);
+	}
 
 	@PostMapping("/saveModification")
 	public int saveModification(@RequestBody DeclarationIR declarationIR) {
 		return declarationIRService.saveModification(declarationIR);
 	}
-	
-	
-	
-	
-	
-	
+
 /*	@PostMapping("/createDeclarationIr")
 	public DeclarationIR createDeclarationIr(@RequestBody DeclarationIR declarationIR) {
 		return declarationIRService.createDeclarationIr(declarationIR);

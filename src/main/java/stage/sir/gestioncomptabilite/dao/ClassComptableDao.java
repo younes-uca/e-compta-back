@@ -11,5 +11,6 @@ public interface ClassComptableDao extends JpaRepository<ClasseComptable,Long > 
     List<ClasseComptable> findAll();
     ClasseComptable findByNumero(int numero);
     int deleteByNumero(int numero);
+    ClasseComptable findByLibelle(String libelle);
 
 }

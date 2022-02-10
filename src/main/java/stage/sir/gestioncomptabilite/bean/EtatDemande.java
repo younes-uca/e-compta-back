@@ -12,6 +12,7 @@ public class EtatDemande {
     private Long id;
     private String ref;
     private String libelle;
+    private String couleur;
 
     public Long getId() {
         return id;
@@ -35,5 +36,13 @@ public class EtatDemande {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public String getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
 }

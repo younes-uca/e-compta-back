@@ -56,6 +56,11 @@ public class AcomptesProvided {
         return acomptesService.save(acomptes);
     }
 
+    @GetMapping("/find-by-societe/{ice}")
+    List<Acomptes> findBySocieteIce(@PathVariable String ice){
+        return acomptesService.findBySocieteIce(ice);
+    }
+
     @Autowired
     AcomptesService acomptesService;
 }

@@ -1,5 +1,6 @@
 package stage.sir.gestioncomptabilite.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +12,7 @@ import stage.sir.gestioncomptabilite.bean.CategorieService;
 public interface CategorieServiceDao extends JpaRepository<CategorieService, Long> {
 
 	CategorieService findByTitre(String titre);
-	
 	Optional<CategorieService> findById(Long id);
 	int deleteByTitre(String titre);
+    List<CategorieService> findAllByOrderByIndiceAffichage();
 }

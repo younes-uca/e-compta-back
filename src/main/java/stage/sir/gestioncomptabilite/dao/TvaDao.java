@@ -9,4 +9,5 @@ import stage.sir.gestioncomptabilite.bean.Tva;
 public interface TvaDao extends JpaRepository<Tva, Long> {
     public Tva findByRef(String ref);
     public  int deleteByRef(String ref);
+    public Tva findByValeur(double valeur);
 }

@@ -1,12 +1,10 @@
 package stage.sir.gestioncomptabilite.bean;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,17 +18,49 @@ public class Comptable {
     private Long id;
     private String code;
     private String nom;
+    private String telephone;
+    private String prenom;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne(mappedBy = "comptable")
     private User user;
-    
-    
+    private Boolean typeTraitant;
+    private Boolean typeValidateur;
     private String type;
     
     
     
     
-    
+    public Boolean getTypeTraitant() {
+        return typeTraitant;
+    }
+
+    public void setTypeTraitant(Boolean typeTraitant) {
+        this.typeTraitant = typeTraitant;
+    }
+
+    public Boolean getTypeValidateur() {
+        return typeValidateur;
+    }
+
+    public void setTypeValidateur(Boolean typeValidateur) {
+        this.typeValidateur = typeValidateur;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
     
     public String getType() {
 		return type;

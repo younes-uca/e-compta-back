@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import stage.sir.gestioncomptabilite.bean.*;
+import stage.sir.gestioncomptabilite.config.DateUtil;
 import stage.sir.gestioncomptabilite.dao.DeclarationISDao;
 import stage.sir.gestioncomptabilite.util.StringUtil;
 import stage.sir.gestioncomptabilite.vo.*;
@@ -117,7 +118,9 @@ public class DeclarationISService{
         List<TauxIsConfig> tauxIsConfigs = tauxISConfigService.findAll();
         TauxIsConfig tauxIsConfig = new TauxIsConfig();
         for (TauxIsConfig cm: tauxIsConfigs){
-            if (annee >= cm.getAnneeMin() && annee <= cm.getAnneeMax()){
+
+            if (annee >= DateUtil.getYear(cm.getDateMin()) && annee <= DateUtil.getYear(cm.getDateMax())){
+                System.out.println("hanii");
                 tauxIsConfig = cm; }
         }
         return tauxIsConfig;
@@ -168,8 +171,8 @@ public class DeclarationISService{
         List<Facture> facturesC = new ArrayList<Facture>();
         Societe societe = societeService.findByIce(decIsOb.getSociete().getIce());
         decIsOb.setSociete(societe);
-        facturesC = factureService.findBySocieteSourceIceAndAnneeAndTypeOperation(decIsOb.getSociete().getIce(), decIsOb.getAnnee(), "credit");
-        facturesD = factureService.findBySocieteSourceIceAndAnneeAndTypeOperation(decIsOb.getSociete().getIce(), decIsOb.getAnnee(), "debit");
+        facturesC = factureService.findByDemandeRefAndTypeOperationLibelle(decIsOb.getDemande(), "CREDIT");
+        facturesD = factureService.findByDemandeRefAndTypeOperationLibelle(decIsOb.getDemande(), "DEBIT");
         decIsOb.setFactureC(facturesC);
         decIsOb.setFactureD(facturesD);
         decIsOb.setTotalHTGain(calculTotalHT(facturesC));

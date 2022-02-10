@@ -17,7 +17,7 @@ public class FactureXml {
     private double trim;
     private double montantTTC;
     private double montantTVA;
-    private String typeOperation;
+    private TypeOperationFacture typeOperation;
     private Tva tva;
     private EtatFacture etatFacture;
     private EtatPaiement etatPaiement;
@@ -29,7 +29,6 @@ public class FactureXml {
         FactureXml factureXml = new FactureXml();
         factureXml.setId(facture.getId());
         factureXml.setRef(facture.getRef());
-        factureXml.setLibelle(facture.getLibelle());
         factureXml.setMontantHorsTaxe(facture.getMontantHorsTaxe());
         factureXml.setDateOperation(facture.getDateOperation());
         factureXml.setAnnee(facture.getAnnee());
@@ -127,11 +126,11 @@ public class FactureXml {
         this.montantTVA = montantTVA;
     }
 
-    public String getTypeOperation() {
+    public TypeOperationFacture getTypeOperation() {
         return typeOperation;
     }
 
-    public void setTypeOperation(String typeOperation) {
+    public void setTypeOperation(TypeOperationFacture typeOperation) {
         this.typeOperation = typeOperation;
     }
 

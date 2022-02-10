@@ -3,11 +3,15 @@ package stage.sir.gestioncomptabilite.webService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import stage.sir.gestioncomptabilite.bean.Facture;
 import stage.sir.gestioncomptabilite.service.FactureService;
 import stage.sir.gestioncomptabilite.vo.FactureVo;
 
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +59,7 @@ public class FactureProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody Facture facture) {
+    public int save(@RequestBody Facture facture) throws IOException {
         return factureService.save(facture);
     }
 
@@ -76,9 +80,31 @@ public class FactureProvided {
     public List<Facture> findBySocieteSourceIceAndAnneeAndTypeOperation( @PathVariable String ice, @PathVariable double annee, @PathVariable String typeoperation) {
         return factureService.findBySocieteSourceIceAndAnneeAndTypeOperation(ice, annee, typeoperation);
     }
+    
     @GetMapping("/societeSource/ice/{ice}")
     public List<Facture> findBySocieteSourceIce(@PathVariable String ice) {
         if(ice.equals("all")){return factureService.findAll();}
         return factureService.findBySocieteSourceIce(ice);
+    }
+
+   
+
+    @GetMapping("/demande/{demande}")
+    List<Facture> findByDemandeRef(@PathVariable String demande){
+        return factureService.findByDemandeRef(demande);
+    }
+
+    @PutMapping("/upload/facture/{factureRef}/libelle/{libelle}")
+    void uploadFile(@RequestParam("file") MultipartFile multipartFile, @PathVariable String factureRef, @PathVariable String libelle){
+       factureService.uploadFile(multipartFile, factureRef, libelle);
+    }
+
+    @GetMapping("/reference/{reference}/trim/{trimestre}")
+    public List<Facture> findByDemandeRefAndTrimestre(@PathVariable String reference,@PathVariable  Integer trim){
+        return factureService.findByDemandeRefAndTrimestre(reference, trim);
+    }
+    @GetMapping("/reference/{reference}/type/{type}")
+    public List<Facture> findByDemandeRefAndTypeOperationLibelle(@PathVariable String reference, @PathVariable String type){
+        return factureService.findByDemandeRefAndTypeOperationLibelle(reference, type);
     }
 }

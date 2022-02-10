@@ -6,6 +6,16 @@ public class DeclarationTvaVo1 {
     private double annee;
     private double trim;
     private double mois;
+    private String refDemande;
+
+
+    public String getRefDemande() {
+        return this.refDemande;
+    }
+
+    public void setRefDemande(String refDemande) {
+        this.refDemande = refDemande;
+    }
 
     public String getSocieteref() {
         return societeref;

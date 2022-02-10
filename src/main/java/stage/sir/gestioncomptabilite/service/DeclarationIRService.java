@@ -171,7 +171,9 @@ public class DeclarationIRService {
 		return declarationIRDao.findById(id);
 	}
 	
-
+	public List<DeclarationIR> findBySocieteIce(String ice){
+		return declarationIRDao.findBySocieteIce(ice);
+	}
 
 
 }

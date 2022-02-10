@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import stage.sir.gestioncomptabilite.bean.TauxIS;
+import stage.sir.gestioncomptabilite.config.DateUtil;
 import stage.sir.gestioncomptabilite.dao.TauxISDao;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -46,4 +49,16 @@ public class TauxISService {
         }
         return pourc;
     }
+
+    public List<TauxIS> findByTauxIsConfig(Long id){
+        return tauxISDao.findByTauxIsConfigId(id);
+    }
+
+    public List<TauxIS> findTauxIs(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String date = dtf.format(now);
+        return tauxISDao.findTauxIs(DateUtil.parse(date));
+    }
+    
 }

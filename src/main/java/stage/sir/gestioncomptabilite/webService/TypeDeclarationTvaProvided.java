@@ -2,7 +2,6 @@ package stage.sir.gestioncomptabilite.webService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import stage.sir.gestioncomptabilite.bean.TypeDeclarationTva;
 import stage.sir.gestioncomptabilite.service.TypeDeclarationTvaService;

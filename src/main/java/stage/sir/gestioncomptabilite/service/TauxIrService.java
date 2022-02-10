@@ -1,5 +1,7 @@
 package stage.sir.gestioncomptabilite.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import stage.sir.gestioncomptabilite.bean.TauxIr;
+import stage.sir.gestioncomptabilite.config.DateUtil;
 import stage.sir.gestioncomptabilite.dao.TauxIrDao;
 
 @Service
@@ -57,5 +60,13 @@ public class TauxIrService {
 		return tauxIrDao.findAll();
 	}
 
+	public List<TauxIr> findTauxIr(){
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String date = dtf.format(now);
+		System.out.println(dtf.format(now));
+		return tauxIrDao.findTauxIr(DateUtil.parse(date));
+	}
 	
 }

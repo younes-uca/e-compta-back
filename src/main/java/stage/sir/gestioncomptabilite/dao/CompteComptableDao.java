@@ -8,10 +8,11 @@ import java.util.List;
 
 @Repository
 public interface CompteComptableDao extends JpaRepository<CompteComptable,Long > {
-    List<CompteComptable> findAll();
+    List<CompteComptable> findAllByOrderByCode();
     List<CompteComptable> findBySousClasseComptableNumero(int numero);
     int deleteByCode(String code);
     int deleteBySousClasseComptableNumero(int numero);
     CompteComptable findByCode(String code);
+
 
 }
